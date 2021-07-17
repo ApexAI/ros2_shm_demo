@@ -7,7 +7,7 @@
 # string[256] data
 # is possible but the generated type is more cumbersome to use
 #
-# As generic char array generalizes to arbitrary data.
+# A generic char array allows passing arbitrary data.
 #
 char[256] data
 uint8 size
