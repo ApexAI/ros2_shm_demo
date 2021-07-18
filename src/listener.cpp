@@ -26,7 +26,6 @@ private:
 public:
   explicit Listener(const rclcpp::NodeOptions &options)
       : Node("shm_demo_listener", options) {
-    setvbuf(stdout, NULL, _IONBF, BUFSIZ);
 
     // subscription callback to process arriving data
     auto callback = [this](const Topic::SharedPtr msg) -> void {
@@ -41,7 +40,7 @@ public:
                   msg->counter);
     };
 
-    rclcpp::QoS qos(10);
+    rclcpp::QoS qos(rclcpp::KeepLast(10));
     m_subscription = create_subscription<Topic>("chatter", qos, callback);
   }
 
